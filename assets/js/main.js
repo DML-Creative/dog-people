@@ -1,3 +1,8 @@
-(function() {
-  console.log("This is from main.js");
-})();
+$(document).ready(function() {
+	
+	$(".results-click").click(function() {
+		$(".results, .results-click").toggle();
+	});
+	return false;
+	
+})
