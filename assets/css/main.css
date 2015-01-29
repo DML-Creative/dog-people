@@ -84,6 +84,21 @@ body.primary section input {
 	color: #fff;
 }
 
+body.primary section input::-webkit-input-placeholder { /* WebKit browsers */
+    color: rgba(255,255,255,0.7);
+}
+body.primary section input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: rgba(255,255,255,0.7);
+   opacity: 1;
+}
+body.primary section input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: rgba(255,255,255,0.7);
+   opacity: 1;
+}
+body.primary section input:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color: rgba(255,255,255,0.7);
+}
+
 .logo {
 	display: block;
 	width: 100%;
@@ -208,6 +223,21 @@ header nav ul li a i:hover,
 	background-color: rgba(255,255,255,0);
 	font-family: 'Oxygen','Open Sans',sans-serif;
 	text-align: left;
+}
+
+.inputs .search-wrapper .search-input::-webkit-input-placeholder { /* WebKit browsers */
+    color: rgba(255,255,255,0.7);
+}
+.inputs .search-wrapper .search-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: rgba(255,255,255,0.7);
+   opacity: 1;
+}
+.inputs .search-wrapper .search-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: rgba(255,255,255,0.7);
+   opacity: 1;
+}
+.inputs .search-wrapper .search-input:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color: rgba(255,255,255,0.7);
 }
 
 .inputs li:nth-of-type(2) { position: relative; }
