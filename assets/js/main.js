@@ -24,5 +24,36 @@ $(document).ready(function() {
 		$('.results-search-wrapper').empty('search.html');
 		return false;
 	});
+		
+	// Small devices media query event handler for Mobile Menu
+	var menuTrigger = $(".mobile-menu");
+	var menuMobile = $("header nav ul");
 	
+	if (matchMedia) {
+		var mq = window.matchMedia("(min-width: 1064px)");
+		mq.addListener(WidthChange);
+		WidthChange(mq);
+	}
+	
+	// media query change
+	function WidthChange(mq) {
+	
+		if (mq.matches) {
+			// window width is at least 1064px
+			menuMobile.show();
+		} else {
+			// window width is less than 1064px
+			menuTrigger.click(function() {
+				if(menuMobile.css("display") == "none") { 
+					 menuMobile.show();
+					 $(".nav-overlay").show();
+				} else {
+					 menuMobile.hide();
+					 $(".nav-overlay").hide();
+				}
+				return false;
+			});
+		}
+	}
+
 })

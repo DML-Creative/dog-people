@@ -136,11 +136,17 @@ body.primary section input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
 /* HEADER */
 
-.app-header { position: fixed; width: 100%; box-shadow: 0 1px 1px rgba(0,0,0,0.2); z-index: 100; background-color: rgba(255, 102, 0, 0.9); }
+.app-header { width: 100%; z-index: 100; position: fixed; }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 1064px) {
 	.app-header {
 		padding: 0 calc((100% - 1240px) / 2);
+		background-color: rgba(255, 102, 0, 0.9);
+		height: 52px;
+	}
+	
+	.main-header {
+		height: 150px;
 	}
 }
 
@@ -150,11 +156,23 @@ body.primary section input:-ms-input-placeholder { /* Internet Explorer 10+ */
 	width: 100%;
 	font-family: 'Allan', cursive;
 	font-size: 1.2em;
+	background-color: rgba(255, 102, 0, 0.9);
+}
+
+.title-bar {
+	position: fixed;
+	z-index: 1200;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+	max-width: 1240px;
 }
 
 .inputs {
 	background-color: rgba(255,102,0,0.9)
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2) inset;
+	position: fixed;
+	top: 50px;
+	z-index: 1000;
+	max-width: 1240px;
 }
 
 .title-bar a,
@@ -169,7 +187,7 @@ body.primary section input:-ms-input-placeholder { /* Internet Explorer 10+ */
 	height:50px;
 	display: block;
 	padding: 15px;
-	text-align: center;
+	position: static;
 }
 
 .title-bar li.header-wrapper,
@@ -179,56 +197,95 @@ body.primary section input:-ms-input-placeholder { /* Internet Explorer 10+ */
 	padding: 0;
 }
 
+.main-header .title-bar li.header-wrapper {
+	width: calc(100% - 50px);
+}
+
+
 .title-bar li h1 {
-	text-align: center;
 	font-size: 1.5em;
-	font-weight: 600;
 	padding: 0;
 	line-height: 100%;
 	margin-top: 12px;
+	margin-left: 15px;
 	white-space: nowrap;
 	overflow: hidden;  
 	text-overflow: ellipsis;
 }
 
-.title-bar li:first-of-type,
 .title-bar li:last-of-type {
 	font-family: 'Oxygen','Open Sans',sans-serif;
 }
 
+.main-header .title-bar li h1:first-of-type {
+		display: none;
+	}
+
 .search-button { margin-left: -30px; }
+
+@media screen and (min-width: 1064px) {
+	.main-header .title-bar li h1:first-of-type {
+		display: block;
+	}
+	.main-header .title-bar li h1:last-of-type {
+		display: none;
+	}
+	
+	.title-bar,
+	.inputs {
+		background-color: rgba(255, 102, 0, 0.0);
+	}
+	
+	.inputs { top: 95px; }
+}
 
 
 
 /* MAIN NAV */
 
-header nav ul li {
-	width: calc(100% / 7);
-	height: 36px;
-	display: block;
+header nav ul {
+	width: 100%;
 	background-color: rgba(255,99,0,1);
-	text-align: center;
-	font-size: 1.4em;
+	display: none;
+	position: absolute;
+	z-index: 1100;
+	top: 50px;
 }
 
-header nav ul li,
+header nav ul li {
+	width: 100%;
+	display: block;
+	font-size: 1.4em;
+	color: #fff;
+	padding: 10px 15px; 
+}
+
 header nav ul li i {
 	color: #fff;
+	width: 30px;
 }
 
 header nav ul li span {
 	font-size: 0.7em;
-	white-space: nowrap;
-	display: none;
+	margin-left: 5px;
 }
 
-@media screen and (min-width: 1080px) {
-	header nav ul li span {
-		display: inline;
-		margin-left: 5px;
+@media screen and (min-width: 1064px) {
+	header nav ul {
+		display: block;
+		position: static;
+		margin-top: 50px;
 	}
+	
+	header nav ul li,
+	header nav ul li i {
+		width: auto;
+		display: inline-block;
+	}
+
 }
 
+header nav ul a:hover,
 header nav ul a:hover li,
 header nav ul a:hover li i,
 .title-bar a:hover,
@@ -237,18 +294,31 @@ header nav ul a:hover li i,
 	text-decoration: none;
 }
 
+.nav-overlay {
+	background-color: #fff;
+	opacity: 0.85;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 1050;
+}
+
 .search-wrapper { position: relative; }
 .search-wrapper .fa-search { position: absolute; left: 15px; top: 18px; }
 
 .header-overlay {
 	background-color: #ff6600;
 	opacity: 0.85;
-	position: absolute;
-	top: 0; 
-	left: 0;
-	height: 86px;
+	position: fixed;
+	height: 50px;
 	width: 100%;
-	z-index: 200;
+	z-index: 1400;
+}
+
+@media screen and (min-width: 1064px) {
+	.header-overlay {
+		height: 86px;
+	}
 }
 
 .inputs .search-wrapper .search-input {
@@ -313,9 +383,16 @@ header nav ul a:hover li i,
 
 /* RESULTS */
 
-.results-wrapper { padding-top: 140px; margin-bottom: 75px; max-width: 1240px; }
+.results-wrapper { height: 100%; max-width: 1240px; padding-top: 100px; }
+.results-wrapper .results-list ol { margin-bottom: 75px; }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 1064px) {
+	.results-wrapper {
+		padding-top: 150px;
+	}
+}
+
+@media screen and (min-width: 1240px) {
 	.results-wrapper {
 		margin: 0 calc((100% - 1240px) / 2);
 	}
@@ -349,19 +426,19 @@ footer.ad-block {
 	text-align: center;
 	width: 100%;
 	box-shadow: 0 -1px 2px rgba(0,0,0,0.2);
-	z-index: 35;
+	z-index: 100;
 }
 
-.results-search-wrapper { margin-top: 2px; position: relative; }
-.results-search { position: absolute; z-index: 50; width: 100%; background-color: #fff; }
+.results-search-wrapper { margin-top: 5px; position: relative; }
+.results-search { position: absolute; z-index: 50; width: 100%; background-color: #fff; padding-top: 10px; }
 .results-overlay { background-color: #fff; z-index: 25; width: 100%; height: 100%; position: fixed; }
-.header-exit, .header-exit:hover { color: #fff; z-index: 300; position: absolute; top: 15px; right: 15px; font-size: 1.4em; }
-.geo-search { z-index: 400; position: fixed; width: 100%; background-color: rgba(255,255,255,0.85); padding: 5px; box-shadow: 0 1px 1px rgba(0,0,0,0.2); }
+.header-exit, .header-exit:hover { color: #fff; z-index: 1401; position: fixed; top: 10px; right: 20px; font-size: 1.4em; }
+.geo-search { z-index: 400; position: fixed; width: 100%; background-color: rgba(255,255,255,0.85); padding: 10px 5px; box-shadow: 0 1px 1px rgba(0,0,0,0.2); }
 .geo-search-icon {
-	position: absolute;
+	position: fixed;
 	z-index: 600;
 	left: 18px;
-	top: 14px;
+	top: 123px;
 	color: #999;
 }
 
@@ -371,12 +448,36 @@ footer.ad-block {
 	border: none;
 }
 
+@media screen and (min-width: 1064px) {
+	.geo-search-icon {
+		top: 170px;
+	}
+	
+	.results-search {
+		padding-top: 50px;
+	}
+	
+	.results-search-wrapper {
+		margin-top: 0;
+	}
+}
+
+@media screen and (min-width: 1240px) {
+	.header-exit, .header-exit:hover {
+		right: calc((50% - 620px) + 20px)
+	}
+	
+	.geo-search-icon {
+		left: calc(50% - 620px + 20px);
+	}
+}
+
 
 /* DETAIL VIEW */
 
-.detail-content { padding-top: 47px; margin-bottom: 75px; }
+.detail-content { padding: 75px 15px; }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 1240px) {
 	.detail-content {
 		margin: 0 calc((100% - 1240px) / 2) 75px calc((100% - 1240px) / 2);
 	}
