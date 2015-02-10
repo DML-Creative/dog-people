@@ -26,17 +26,7 @@
     <script type="text/javascript" src="assets/js/main.js"></script>
     <!-- Google Maps -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASRfTwz0DkEdtStqeIvInHiC_ZZ75nGrE"></script>
-    <script type="text/javascript">
-        function initialize() {
-            var mapOptions = {
-                center: new google.maps.LatLng(47.606388, -122.330833),
-                zoom: 15
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
-        }
 
-        google.maps.event.addDomListener(window, "load", initialize);
-    </script>
     <style>
         /* GOOGLE MAP */
         html, body, .results, #googleMap {
@@ -70,51 +60,88 @@
     </div>
 
     <header class="app-header main-header">
-		<a href="" class="header-exit" style="display: none;"><i class="fa fa-times"></i></a>
-		<div class="header-overlay" style="display: none;"></div>
-		<ul class="title-bar left clear">
-			<li class="header-wrapper">
-				<h1>Dog People</h1>
-				<h1><a href="" class="mobile-menu">Menu <i class="fa fa-angle-down"></i></a></h1>
-			</li>
-			<li><a href="#" data-toggle="modal" data-target="#modal-settings"><i class="fa fa-sign-out"></i></a></li>
-		</ul>
-		<nav>
-			<ul class="clear">
-				<a href="" class="parks"><li><i class="fa fa-list"></i><span>All</span></li></a>
-				<a href="" class="parks"><li><i class="fa fa-tree"></i><span>Parks</span></li></a>
-				<a href="" class="day-care"><li><i class="fa fa-home"></i><span>Boarding & Day Care</span></li></a>
-				<a href="" class="bars"><li><i class="fa fa-beer"></i><span>Food & Drinks</span></li></a>
-				<a href="" class="salons"><li><i class="fa fa-scissors"></i><span>Salons</span></li></a>
-				<a href="" class="stores"><li><i class="fa fa-shopping-cart"></i><span>Stores</span></li></a>
-				<a href="" class="training"><li><i class="fa fa-graduation-cap"></i><span>Training</span></li></a>
-				<a href="" class="walkers"><li><i class="fa fa-paw"></i><span>Sitters & Walkers</span></li></a>
-				<a href="" class="hotels"><li><i class="fa fa-suitcase"></i><span>Hotels</span></li></a>
-			</ul>
-		</nav>
-		<div class="nav-overlay" style="display: none;"></div>
-		<ul class="inputs left clear">
-			<li class="search-wrapper">
-				<form>
-					<i class="fa fa-search"></i>
-					<input type=""text placeholder="Search" class="search-input">
-				</form>
-			</li>
-			<li>
-				<a href=""><i class="fa fa-location-arrow"></i></a>
-			</li>
-			<li>
-				<a href="javascript:void();" class="results-click"><i class="fa fa-list-ol"></i></a>
-				<a href="javascript:void();" class="results-click" style="display: none;"><i class="fa fa-map-marker"></i></a>
-			</li>
-		</ul>
-	</header>
+        <a href="" class="header-exit" style="display: none;"><i class="fa fa-times"></i></a>
+        <div class="header-overlay" style="display: none;"></div>
+        <ul class="title-bar left clear">
+            <li class="header-wrapper">
+                <h1>Dog People</h1>
+                <h1><a href="" class="mobile-menu">Menu <i class="fa fa-angle-down"></i></a></h1>
+            </li>
+            <li><a href="#" data-toggle="modal" data-target="#modal-settings"><i class="fa fa-sign-out"></i></a></li>
+        </ul>
+        <nav>
+            <ul class="clear">
+                <a href="" class="parks">
+                    <li><i class="fa fa-list"></i><span>All</span></li>
+                </a>
+                <a href="" class="parks">
+                    <li><i class="fa fa-tree"></i><span>Parks</span></li>
+                </a>
+                <a href="" class="day-care">
+                    <li><i class="fa fa-home"></i><span>Boarding & Day Care</span></li>
+                </a>
+                <a href="" class="bars">
+                    <li><i class="fa fa-beer"></i><span>Food & Drinks</span></li>
+                </a>
+                <a href="" class="salons">
+                    <li><i class="fa fa-scissors"></i><span>Salons</span></li>
+                </a>
+                <a href="" class="stores">
+                    <li><i class="fa fa-shopping-cart"></i><span>Stores</span></li>
+                </a>
+                <a href="" class="training">
+                    <li><i class="fa fa-graduation-cap"></i><span>Training</span></li>
+                </a>
+                <a href="" class="walkers">
+                    <li><i class="fa fa-paw"></i><span>Sitters & Walkers</span></li>
+                </a>
+                <a href="" class="hotels">
+                    <li><i class="fa fa-suitcase"></i><span>Hotels</span></li>
+                </a>
+            </ul>
+        </nav>
+        <div class="nav-overlay" style="display: none;"></div>
+        <ul class="inputs left clear">
+            <li class="search-wrapper">
+                <form>
+                    <i class="fa fa-search"></i>
+                    <input type="" text placeholder="Search" class="search-input">
+                </form>
+            </li>
+            <li>
+                <a href=""><i class="fa fa-location-arrow"></i></a>
+            </li>
+            <li>
+                <a href="javascript:void();" class="results-click"><i class="fa fa-list-ol"></i></a>
+                <a href="javascript:void();" class="results-click" style="display: none;"><i class="fa fa-map-marker"></i></a>
+            </li>
+        </ul>
+    </header>
 
     <div class="results-wrapper">
         <section class="results-search-wrapper"></section>
         <section class="results">
             <!-- Map results -->
             <div id="googleMap"></div>
+
+            <div id="infoWindow" style="display: none;">
+                <a href="detail.html">
+                    <strong>Norm's Eatery & Ale House</strong>
+                    <strong class="geo right">4mi</strong>
+                    <div class="rating">
+                        3.9
+						<i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <span class="gray">(56)</span>
+                    </div>
+                    <small class="gray">460 N 36th St. Seattle</small>
+                    <small class="gray">&#149; $</small>
+                    <small class="gray">&#149; Brewpub</small>
+                </a>
+            </div>
         </section>
         <section class="results results-list" style="display: none;">
             <!-- List results -->
